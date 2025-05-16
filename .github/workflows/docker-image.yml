@@ -18,6 +18,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: WorldClocks
-          file: WorldClocks/dockerfile
+          file: WorldClocks/Dockerfile
           push: false
           tags: worldclocks:latest

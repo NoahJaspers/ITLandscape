@@ -1,8 +1,17 @@
-# Use the official nginx image as base
+# Build stage
+FROM nginx:alpine as builder
+
+# Set working directory
+WORKDIR /app
+
+# Copy application files
+COPY . .
+
+# Production stage
 FROM nginx:alpine
 
-# Copy the application files to the nginx html directory
-COPY . /usr/share/nginx/html/
+# Copy built files from builder
+COPY --from=builder /app /usr/share/nginx/html/
 
 # Expose port 80
 EXPOSE 80 
